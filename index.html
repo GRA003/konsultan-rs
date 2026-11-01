@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dr. Yulhasmida — Konsultan Rumah Sakit</title>
+<meta name="description" content="Jasa konsultasi manajemen rumah sakit: akreditasi, mutu dan keselamatan pasien, tata kelola, dan BPJS. Didampingi langsung oleh mantan direktur rumah sakit dengan pengalaman lebih dari 30 tahun.">
+<style>
+  :root {
+    --primary: #e91d2a;
+    --on-primary: #ffffff;
+    --canvas: #ffffff;
+    --ink: #000000;
+    --frame: #000000;
+    --yellow: #fcc20f;
+    --link: #0000ee;
+    --olive: #8e8a25;
+    --sage: #b3bd95;
+    --salmon: #d77a7a;
+    --peach: #e6915d;
+    --lime: #c0d4a7;
+    --sky: #9ab6c8;
+    --steel: #a5b8c0;
+    --periwinkle: #8c9ae0;
+
+    --font-display: "Arial Black", "Arial Bold", Helvetica, Arial, sans-serif;
+    --font-ui: Helvetica, Arial, sans-serif;
+    --font-body: "Times New Roman", Times, Georgia, serif;
+
+    /* Ukuran dasar besar agar nyaman dibaca pembaca usia lanjut */
+    --base: 20px;
+  }
+  html.besar { --base: 24px; }
+
+  * { box-sizing: border-box; }
+  html { font-size: var(--base); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--frame);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Bingkai hitam halaman */
+  .frame { padding: 8px; }
+  .page { background: var(--canvas); max-width: 1100px; margin: 0 auto; }
+
+  a { color: var(--link); }
+  a:focus-visible, button:focus-visible {
+    outline: 4px solid var(--yellow);
+    outline-offset: 2px;
+  }
+
+  .skip {
+    position: absolute; left: -9999px;
+    background: var(--yellow); color: var(--ink); padding: 12px 16px;
+    font-family: var(--font-ui); font-weight: 700;
+  }
+  .skip:focus { left: 16px; top: 16px; z-index: 10; }
+
+  /* ── Banner atas ── */
+  .top-banner {
+    background: var(--frame);
+    color: var(--canvas);
+    padding: 16px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .brand { font-family: var(--font-ui); font-weight: 700; line-height: 1.2; }
+  .brand .name { font-family: var(--font-display); font-size: 1.4rem; display: block; }
+  .brand .tag { font-size: 0.85rem; text-transform: uppercase; }
+  .banner-right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .phone-callout {
+    color: var(--primary); background: var(--frame);
+    font-family: var(--font-ui); font-weight: 700; font-size: 1.15rem;
+    text-decoration: none; padding: 4px 8px;
+    color: #ff5a63; /* sedikit lebih terang agar kontras di atas hitam */
+  }
+  .sticker {
+    display: inline-block;
+    background: var(--yellow); color: var(--ink);
+    border: 2px solid var(--frame);
+    box-shadow: 3px 3px 0 #555;
+    font-family: var(--font-ui); font-weight: 700; font-size: 0.9rem;
+    text-transform: uppercase; text-decoration: none;
+    padding: 10px 14px; min-height: 48px; line-height: 1.6;
+  }
+
+  /* ── Navigasi sederhana ── */
+  .nav {
+    border-bottom: 2px solid var(--frame);
+    display: flex; flex-wrap: wrap;
+  }
+  .nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    font-family: var(--font-ui); font-weight: 700; font-size: 0.9rem;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    padding: 14px 12px; min-height: 52px;
+    border-right: 2px solid var(--frame);
+  }
+  .nav a:last-of-type { border-right: 0; }
+  .nav button {
+    font-family: var(--font-ui); font-weight: 700; font-size: 0.9rem;
+    background: var(--frame); color: var(--canvas);
+    border: 0; padding: 14px 18px; min-height: 52px; cursor: pointer;
+  }
+
+  /* ── Hero ── */
+  .hero { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 2px solid var(--frame); }
+  .eyebrow {
+    font-family: var(--font-display); font-weight: 900;
+    line-height: 1.05; text-transform: uppercase; margin: 0;
+  }
+  .hero-main { background: var(--olive); padding: 40px 32px; position: relative; }
+  .hero-main .eyebrow { font-size: 2.3rem; color: var(--ink); }
+  .hero-main p { font-size: 1.15rem; margin: 20px 0 0; max-width: 34em; }
+  .hero-main .highlight { background: var(--canvas); padding: 0 4px; }
+
+  .cta-red {
+    background: var(--primary); color: var(--on-primary);
+    border-left: 2px solid var(--frame);
+    padding: 32px 28px;
+    display: flex; flex-direction: column; justify-content: center; gap: 18px;
+  }
+  .cta-red p { margin: 0; font-size: 1.1rem; }
+  .cta-red strong { font-family: var(--font-ui); }
+
+  .btn {
+    display: inline-block; text-align: center;
+    font-family: var(--font-ui); font-weight: 700; font-size: 1rem;
+    text-transform: uppercase; text-decoration: none;
+    padding: 16px 22px; min-height: 56px;
+    border: 2px solid var(--frame);
+  }
+  .btn-primary { background: var(--frame); color: var(--on-primary); }
+  .btn-secondary { background: var(--canvas); color: var(--ink); }
+  .btn-yellow { background: var(--yellow); color: var(--ink); box-shadow: 3px 3px 0 var(--frame); }
+
+  .seal {
+    float: right; margin: -16px 0 12px 16px;
+    width: 120px; height: 120px; border-radius: 9999px;
+    background: var(--primary); color: var(--canvas);
+    border: 4px solid var(--canvas); outline: 2px solid var(--frame);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--font-ui); font-weight: 700; text-align: center; line-height: 1.05;
+    transform: rotate(-8deg);
+  }
+  .seal b { font-family: var(--font-display); font-size: 1.6rem; }
+  .seal span { font-size: 0.65rem; text-transform: uppercase; }
+
+  /* ── Bagian umum ── */
+  section { padding: 40px 32px; border-bottom: 2px solid var(--frame); }
+  section > h2 {
+    font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+    font-size: 1.7rem; line-height: 1.1; margin: 0 0 8px;
+  }
+  .lead { font-size: 1.1rem; margin: 0 0 28px; max-width: 40em; }
+
+  /* ── Angka ── */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--frame); }
+  .stat { padding: 20px; border-right: 2px solid var(--frame); background: var(--canvas); }
+  .stat:last-child { border-right: 0; }
+  .stat b { display: block; font-family: var(--font-display); font-size: 2.6rem; line-height: 1; }
+  .stat span { display: block; margin-top: 8px; font-size: 1rem; }
+
+  /* ── Kartu pita (ribbon card) ── */
+  .ribbons { display: grid; gap: 24px; }
+  .ribbon { border: 2px solid var(--frame); }
+  .ribbon-title {
+    background: var(--canvas);
+    border-bottom: 2px solid var(--frame);
+    font-family: var(--font-ui); font-weight: 700; text-transform: uppercase;
+    font-size: 1.05rem; padding: 10px 16px; margin: 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .ribbon-title .num {
+    font-family: var(--font-display); background: var(--frame); color: var(--canvas);
+    min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+  }
+  .ribbon-body { padding: 16px 20px; display: flex; gap: 20px; align-items: flex-start; }
+  .ribbon-body p { margin: 0; }
+  .ribbon-body ul { margin: 10px 0 0; padding-left: 1.2em; }
+  .ribbon-body li { margin-bottom: 4px; }
+  .ribbon-icon {
+    flex: 0 0 72px; height: 72px; background: var(--canvas);
+    border: 2px solid var(--frame); box-shadow: 3px 3px 0 var(--frame);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ribbon-icon svg { width: 44px; height: 44px; }
+  .t-sage { background: var(--sage); }
+  .t-salmon { background: var(--salmon); }
+  .t-peach { background: var(--peach); }
+  .t-lime { background: var(--lime); }
+  .t-sky { background: var(--sky); }
+  .t-steel { background: var(--steel); }
+  .t-periwinkle { background: var(--periwinkle); }
+
+  /* ── Profil ── */
+  .profile { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .box { border: 2px solid var(--frame); }
+  .box h3 {
+    margin: 0; padding: 10px 16px; border-bottom: 2px solid var(--frame);
+    font-family: var(--font-ui); font-weight: 700; text-transform: uppercase; font-size: 1.05rem;
+    background: var(--canvas);
+  }
+  .box .inner { padding: 16px 20px; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li { padding: 12px 0; border-bottom: 1px solid var(--frame); }
+  .list li:last-child { border-bottom: 0; }
+  .list .yr { font-family: var(--font-ui); font-weight: 700; display: block; font-size: 0.9rem; }
+  .profile-intro {
+    grid-column: 1 / -1; background: var(--sky); border: 2px solid var(--frame);
+    padding: 20px 24px; font-size: 1.1rem;
+  }
+  .profile-intro p { margin: 0 0 12px; }
+  .profile-intro p:last-child { margin: 0; }
+
+  /* ── Langkah ── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
+  .step { border: 2px solid var(--frame); background: var(--lime); padding: 20px; }
+  .step b {
+    display: block; font-family: var(--font-display); font-size: 1.3rem; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .step b::before {
+    counter-increment: step; content: counter(step);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; margin-right: 10px;
+    background: var(--yellow); border: 2px solid var(--frame); font-size: 1.2rem;
+  }
+  .step p { margin: 0; }
+
+  /* ── Kontak ── */
+  .contact { background: var(--peach); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .contact-card { background: var(--canvas); border: 2px solid var(--frame); padding: 24px; }
+  .contact-card h3 { font-family: var(--font-ui); text-transform: uppercase; margin: 0 0 6px; font-size: 1rem; }
+  .contact-card .big { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2; margin: 0 0 16px; word-break: break-word; }
+  .contact-card .btn { width: 100%; }
+
+  /* ── Footer ── */
+  footer { padding: 24px 32px; font-size: 0.85rem; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 12px; }
+  footer nav a { font-family: var(--font-ui); font-weight: 700; text-transform: uppercase; color: var(--ink); padding: 8px 0; }
+  footer p { margin: 4px 0; }
+
+  /* ── Tombol WA melayang ── */
+  .float-wa {
+    position: fixed; right: 16px; bottom: 16px; z-index: 5;
+    background: var(--yellow); color: var(--ink);
+    border: 2px solid var(--frame); box-shadow: 4px 4px 0 var(--frame);
+    font-family: var(--font-ui); font-weight: 700; text-transform: uppercase; text-decoration: none;
+    padding: 14px 18px; font-size: 0.9rem;
+  }
+
+  /* ── Intro: koran bertumpuk ── */
+  #intro {
+    display: none;
+    position: fixed; inset: 0; z-index: 20;
+    background: var(--frame);
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  html.intro-on #intro { display: flex; }
+  html.intro-on body { overflow: hidden; }
+  .paper {
+    position: absolute;
+    width: min(560px, 88vw);
+    background: var(--canvas); color: var(--ink);
+    border: 2px solid var(--frame);
+    box-shadow: 6px 6px 0 #333;
+    padding: 18px 22px 22px;
+    font-size: 16px; line-height: 1.45;
+  }
+  .paper .mast {
+    font-family: var(--font-display); font-size: 30px; line-height: 1;
+    text-align: center; text-transform: uppercase;
+    border-bottom: 4px double var(--frame); padding-bottom: 8px;
+  }
+  .paper .dateline {
+    font-family: var(--font-ui); font-weight: 700; font-size: 12px; text-transform: uppercase;
+    display: flex; justify-content: space-between;
+    border-bottom: 1px solid var(--frame); padding: 6px 0; margin-bottom: 12px;
+  }
+  .paper h2 {
+    font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+    font-size: 28px; line-height: 1.05; margin: 0 0 12px;
+  }
+  .paper .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .paper .cols p { margin: 0; }
+  .paper .photo {
+    border: 2px solid var(--frame); min-height: 110px;
+    background: repeating-linear-gradient(45deg, var(--canvas) 0 6px, #d9d9d9 6px 7px);
+  }
+  .paper .photo.t-sage { background: var(--sage); }
+  .paper .photo.t-salmon { background: var(--salmon); }
+  .paper .photo.t-sky { background: var(--sky); }
+  .paper .photo.t-periwinkle { background: var(--periwinkle); }
+  .paper .burst {
+    position: absolute; right: -14px; top: 58px;
+    background: var(--yellow); border: 2px solid var(--frame);
+    font-family: var(--font-ui); font-weight: 700; font-size: 16px;
+    padding: 6px 12px; transform: rotate(12deg);
+  }
+  .skip-intro {
+    position: absolute; right: 16px; bottom: 16px; z-index: 2;
+    background: var(--yellow); color: var(--ink);
+    border: 2px solid var(--canvas);
+    font-family: var(--font-ui); font-weight: 700; font-size: 18px; text-transform: uppercase;
+    padding: 14px 22px; min-height: 56px; cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    .paper { padding: 14px 16px 18px; font-size: 14px; }
+    .paper .mast { font-size: 22px; }
+    .paper h2 { font-size: 22px; }
+    .paper .cols { grid-template-columns: 1fr; }
+    .paper .photo { min-height: 60px; }
+  }
+
+  @media (max-width: 860px) {
+    .hero, .profile, .contact-grid { grid-template-columns: 1fr; }
+    .cta-red { border-left: 0; border-top: 2px solid var(--frame); }
+    .steps { grid-template-columns: 1fr; }
+    .hero-main .eyebrow { font-size: 1.8rem; }
+    .seal { float: none; transform: none; margin: 0 0 20px; width: 100px; height: 100px; }
+  }
+  @media (max-width: 600px) {
+    :root { --base: 18px; }
+    html.besar { --base: 22px; }
+    .frame { padding: 4px; }
+    section, .hero-main, .cta-red { padding: 28px 16px; }
+    footer { padding: 20px 16px 96px; }
+    .top-banner { padding: 14px 16px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: 0; border-bottom: 2px solid var(--frame); }
+    .stat:last-child { border-bottom: 0; }
+    .nav a { flex: 1 1 50%; border-bottom: 2px solid var(--frame); }
+    .nav button { flex: 1 1 100%; }
+    .ribbon-body { flex-direction: column; }
+    .ribbon-icon { flex-basis: auto; width: 64px; height: 64px; }
+  }
+</style>
+<script>
+  // Tampilkan intro koran hanya jika pengunjung tidak meminta animasi dikurangi
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('intro-on');
+  }
+</script>
+</head>
+<body>
+<div id="intro" aria-hidden="true">
+  <div class="paper">
+    <div class="mast">Warta Rumah Sakit</div>
+    <div class="dateline"><span>Edisi 1992</span><span>Kesehatan</span></div>
+    <h2>Memulai Pengabdian sebagai Dokter</h2>
+    <div class="cols"><p>Bertugas di puskesmas, klinik, dan rumah sakit di Sumatera dan Jawa.</p><div class="photo"></div></div>
+  </div>
+  <div class="paper">
+    <div class="mast">Warta Rumah Sakit</div>
+    <div class="dateline"><span>Edisi 2008</span><span>Manajemen</span></div>
+    <h2>Dipercaya Memimpin 7 Rumah Sakit</h2>
+    <div class="cols"><div class="photo t-sky"></div><p>Menjabat Direktur di rumah sakit umum swasta hingga rumah sakit jiwa.</p></div>
+  </div>
+  <div class="paper">
+    <div class="mast">Warta Rumah Sakit</div>
+    <div class="dateline"><span>Edisi 2016</span><span>Akreditasi</span></div>
+    <h2>Mengawal Akreditasi &amp; Mutu Pelayanan</h2>
+    <div class="cols"><p>Asesor internal dan evaluator akreditasi sesuai kurikulum KARS.</p><div class="photo t-sage"></div></div>
+  </div>
+  <div class="paper">
+    <div class="mast">Warta Rumah Sakit</div>
+    <div class="dateline"><span>Edisi 2017</span><span>BPJS</span></div>
+    <h2>Tata Kelola Pasien BPJS Lebih Tertib</h2>
+    <div class="cols"><div class="photo t-periwinkle"></div><p>Klaim lancar, pelayanan tepat, rumah sakit tetap sehat.</p></div>
+  </div>
+  <div class="paper">
+    <div class="mast">Warta Rumah Sakit</div>
+    <div class="dateline"><span>Edisi Hari Ini</span><span>Konsultasi</span></div>
+    <h2>dr. Yulhasmida Siap Mendampingi Rumah Sakit Anda</h2>
+    <div class="cols"><p>30 tahun pengalaman kini terbuka untuk pemilik dan direksi rumah sakit.</p><div class="photo t-salmon"></div></div>
+    <div class="burst">BARU!</div>
+  </div>
+  <button type="button" class="skip-intro" id="lewati">Lewati &raquo;</button>
+</div>
+
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="frame">
+<div class="page">
+
+  <!-- Banner atas -->
+  <header class="top-banner">
+    <div class="brand">
+      <span class="name">dr. Yulhasmida</span>
+      <span class="tag">Konsultan Manajemen Rumah Sakit</span>
+    </div>
+    <div class="banner-right">
+      <!-- GANTI nomor telepon di bawah ini -->
+      <a class="phone-callout" href="tel:+6281200000000">☎ 0812-0000-0000</a>
+      <a class="sticker" href="#kontak">Konsultasi Sekarang</a>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Menu utama">
+    <a href="#layanan">Layanan</a>
+    <a href="#profil">Profil</a>
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#kontak">Kontak</a>
+    <button type="button" id="ukuran" aria-pressed="false">A+ Perbesar Tulisan</button>
+  </nav>
+
+  <main id="isi">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-main">
+        <div class="seal" aria-hidden="true"><b>30+</b><span>Tahun<br>Pengalaman</span></div>
+        <h1 class="eyebrow">Rumah sakit Anda lebih tertata, lebih bermutu.</h1>
+        <p>Pendampingan langsung oleh <span class="highlight">mantan direktur rumah sakit</span> yang sudah memimpin 7 rumah sakit selama lebih dari 15 tahun.</p>
+      </div>
+      <div class="cta-red">
+        <p><strong>Sedang menyiapkan akreditasi, membenahi manajemen, atau ingin klaim BPJS lebih lancar?</strong></p>
+        <p>Ceritakan masalah rumah sakit Anda. Kami bantu mencari jalan keluarnya, langkah demi langkah.</p>
+        <a class="btn btn-yellow" href="#kontak">Hubungi Kami</a>
+      </div>
+    </div>
+
+    <!-- Angka -->
+    <section aria-labelledby="angka-judul">
+      <h2 id="angka-judul">Pengalaman yang Nyata</h2>
+      <p class="lead">Bukan teori. Semua saran berasal dari pengalaman memimpin rumah sakit sehari-hari.</p>
+      <div class="stats">
+        <div class="stat"><b>30+</b><span>tahun bekerja di dunia kesehatan</span></div>
+        <div class="stat"><b>7</b><span>rumah sakit dipimpin sebagai Direktur</span></div>
+        <div class="stat"><b>3</b><span>provinsi di Sumatera: Riau, Jambi, Sumatera Barat</span></div>
+      </div>
+    </section>
+
+    <!-- Layanan -->
+    <section id="layanan" aria-labelledby="layanan-judul">
+      <h2 id="layanan-judul">Layanan Kami</h2>
+      <p class="lead">Pilih bantuan yang Anda butuhkan. Semua layanan bisa disesuaikan dengan kondisi rumah sakit Anda.</p>
+
+      <div class="ribbons">
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">1</span>Persiapan Akreditasi Rumah Sakit</h3>
+          <div class="ribbon-body t-sage">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><circle cx="24" cy="20" r="12"/><path d="M17 30l-4 14 11-6 11 6-4-14"/><path d="M18 20l4 4 8-8"/></svg>
+            </div>
+            <div>
+              <p>Mendampingi rumah sakit dari awal hingga hari survei akreditasi.</p>
+              <ul>
+                <li>Memeriksa kesiapan dokumen dan pelayanan</li>
+                <li>Melatih tim dan pokja akreditasi</li>
+                <li>Simulasi survei sebelum hari penilaian</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">2</span>Mutu &amp; Keselamatan Pasien</h3>
+          <div class="ribbon-body t-salmon">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/><path d="M24 15v16M16 23h16"/></svg>
+            </div>
+            <div>
+              <p>Membangun sistem pelayanan yang aman dan rapi, agar pasien puas dan risiko kesalahan berkurang.</p>
+              <ul>
+                <li>Menyusun indikator mutu yang mudah dipantau</li>
+                <li>Membenahi alur pelayanan pasien</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">3</span>Tata Kelola &amp; Manajemen Rumah Sakit</h3>
+          <div class="ribbon-body t-periwinkle">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><rect x="8" y="10" width="32" height="32"/><path d="M16 4v10M32 4v10M8 20h32M16 28h6M16 35h16"/></svg>
+            </div>
+            <div>
+              <p>Membantu pemilik dan direksi menata organisasi, aturan internal, dan keuangan rumah sakit supaya berjalan sehat.</p>
+              <ul>
+                <li>Struktur organisasi dan pembagian tugas</li>
+                <li>Kebijakan, SPO, dan pedoman kerja</li>
+                <li>Evaluasi kinerja rumah sakit</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">4</span>Optimalisasi Pasien BPJS / JKN</h3>
+          <div class="ribbon-body t-sky">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><rect x="6" y="12" width="36" height="26"/><path d="M6 20h36M12 30h10"/></svg>
+            </div>
+            <div>
+              <p>Mengatur pelayanan pasien BPJS agar klaim lebih lancar, tepat, dan tidak merugikan rumah sakit.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">5</span>Pendirian Rumah Sakit &amp; Klinik</h3>
+          <div class="ribbon-body t-peach">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><path d="M6 42h36M10 42V16l14-10 14 10v26"/><path d="M24 16v12M18 22h12M20 42v-8h8v8"/></svg>
+            </div>
+            <div>
+              <p>Bagi Anda yang ingin membangun rumah sakit atau klinik baru: dari perencanaan, perizinan, hingga siap beroperasi.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="ribbon">
+          <h3 class="ribbon-title"><span class="num">6</span>Pelatihan SDM &amp; Pimpinan</h3>
+          <div class="ribbon-body t-steel">
+            <div class="ribbon-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="3"><circle cx="16" cy="16" r="6"/><circle cx="34" cy="16" r="6"/><path d="M4 40c0-8 5-12 12-12s12 4 12 12M22 40c0-8 5-12 12-12s10 4 10 12"/></svg>
+            </div>
+            <div>
+              <p>Pelatihan untuk kepala bidang, kepala ruangan, dan staf agar memahami standar pelayanan dan akreditasi.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Profil -->
+    <section id="profil" aria-labelledby="profil-judul">
+      <h2 id="profil-judul">Profil Konsultan</h2>
+      <p class="lead">dr. Yulhasmida &mdash; dokter dan praktisi manajemen rumah sakit.</p>
+
+      <div class="profile">
+        <div class="profile-intro">
+          <p>Memulai karier sebagai dokter umum pada tahun 1992 di puskesmas, klinik, dan rumah sakit di Sumatera dan Jawa, termasuk rumah sakit milik TNI.</p>
+          <p>Sejak 2008 dipercaya menjabat sebagai <strong>Direktur di 7 rumah sakit</strong> &mdash; rumah sakit umum swasta hingga rumah sakit jiwa &mdash; serta pernah memiliki dan mengelola sendiri sebuah klinik rawat inap. Juga aktif di asosiasi perumahsakitan tingkat wilayah.</p>
+        </div>
+
+        <div class="box">
+          <h3>Pendidikan</h3>
+          <div class="inner">
+            <ul class="list">
+              <li><span class="yr">2017 &ndash; 2019</span>Magister (S2) &mdash; Universitas Jambi</li>
+              <li><span class="yr">2012 &ndash; 2014</span>Magister (S2) &mdash; Universitas Hang Tuah</li>
+              <li><span class="yr">1984 &ndash; 1992</span>Pendidikan Dokter (S1) &mdash; Universitas Andalas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Perjalanan Karier</h3>
+          <div class="inner">
+            <ul class="list">
+              <li><span class="yr">2008 &ndash; sekarang</span>Direktur di 7 rumah sakit di Riau, Jambi, dan Sumatera Barat</li>
+              <li><span class="yr">2011 &ndash; 2015</span>Pemilik &amp; dokter, klinik rawat inap</li>
+              <li><span class="yr">2007 &ndash; 2008</span>Kepala Bidang Pelayanan Medis</li>
+              <li><span class="yr">1992 &ndash; 2005</span>Dokter umum di puskesmas dan rumah sakit</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box" style="grid-column: 1 / -1;">
+          <h3>Pelatihan &amp; Sertifikasi</h3>
+          <div class="inner">
+            <ul class="list">
+              <li><span class="yr">2025</span>Evaluator Internal Bidang Pelayanan dan Bidang Manajemen &mdash; Komisi Akreditasi Rumah Sakit (KARS)</li>
+              <li><span class="yr">2022</span>Implementasi Standar Akreditasi Kemenkes RI (Pelayanan Berpusat pada Pasien) &mdash; KARS</li>
+              <li><span class="yr">2017</span>Optimalisasi Tata Kelola Pasien BPJS di Rumah Sakit &mdash; MUKISI</li>
+              <li><span class="yr">2016</span>Asesor Internal Akreditasi serta Peningkatan Mutu &amp; Keselamatan Pasien &mdash; KARS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cara kerja -->
+    <section id="cara-kerja" aria-labelledby="cara-judul">
+      <h2 id="cara-judul">Cara Kerja</h2>
+      <p class="lead">Mudah dan tanpa ribet. Hanya tiga langkah.</p>
+      <div class="steps">
+        <div class="step"><b>Hubungi</b><p>Telepon atau kirim pesan WhatsApp. Ceritakan kondisi rumah sakit Anda.</p></div>
+        <div class="step"><b>Diskusi</b><p>Kita bertemu atau berbicara langsung untuk memahami kebutuhan dan menyusun rencana.</p></div>
+        <div class="step"><b>Pendampingan</b><p>Kami dampingi tim Anda sampai target tercapai, dengan laporan yang jelas.</p></div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="contact" aria-labelledby="kontak-judul">
+      <h2 id="kontak-judul">Hubungi Kami</h2>
+      <p class="lead">Silakan hubungi kapan saja. Kami akan membalas secepatnya.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Telepon / WhatsApp</h3>
+          <!-- GANTI nomor telepon di bawah ini (format wa.me: 62 tanpa angka 0 di depan) -->
+          <p class="big">0812-0000-0000</p>
+          <a class="btn btn-primary" href="https://wa.me/6281200000000?text=Halo%20dr.%20Yulhasmida%2C%20saya%20ingin%20berkonsultasi%20tentang%20rumah%20sakit%20kami.">Kirim Pesan WhatsApp</a>
+        </div>
+        <div class="contact-card">
+          <h3>Email</h3>
+          <!-- GANTI alamat email di bawah ini -->
+          <p class="big">email@contoh.com</p>
+          <a class="btn btn-secondary" href="mailto:email@contoh.com?subject=Konsultasi%20Rumah%20Sakit">Kirim Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <nav aria-label="Menu bawah">
+      <a href="#layanan">Layanan</a>
+      <a href="#profil">Profil</a>
+      <a href="#cara-kerja">Cara Kerja</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <p>&copy; 2026 dr. Yulhasmida &mdash; Konsultan Manajemen Rumah Sakit. <a href="#isi">Kembali ke atas</a></p>
+  </footer>
+
+</div>
+</div>
+
+<a class="float-wa" href="https://wa.me/6281200000000">WhatsApp</a>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('ukuran');
+    function set(besar) {
+      root.classList.toggle('besar', besar);
+      btn.setAttribute('aria-pressed', besar ? 'true' : 'false');
+      btn.textContent = besar ? 'A− Tulisan Normal' : 'A+ Perbesar Tulisan';
+    }
+    try { set(localStorage.getItem('tulisanBesar') === '1'); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var besar = !root.classList.contains('besar');
+      set(besar);
+      try { localStorage.setItem('tulisanBesar', besar ? '1' : '0'); } catch (e) {}
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  })();
+</script>
+<script src="node_modules/gsap/dist/gsap.min.js"></script>
+<script src="node_modules/gsap/dist/ScrollTrigger.min.js"></script>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var intro = document.getElementById('intro');
+    var introOn = root.classList.contains('intro-on');
+
+    // Tanpa GSAP (atau animasi dimatikan), halaman langsung tampil apa adanya
+    if (!window.gsap || !introOn) {
+      root.classList.remove('intro-on');
+      if (intro) intro.remove();
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Intro selalu dimulai dari bagian paling atas halaman
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
+    var papers = gsap.utils.toArray('#intro .paper');
+    var tilts = [-7, 5, -3, 8, -1];
+
+    // 1. Koran dijatuhkan satu per satu hingga bertumpuk
+    var tl = gsap.timeline({ onComplete: selesai });
+    papers.forEach(function (p, i) {
+      tl.fromTo(p,
+        { y: '-110vh', x: gsap.utils.random(-80, 80), rotation: tilts[i] * 4, scale: 1.15 },
+        { y: i * -4, x: i * 3, rotation: tilts[i], scale: 1, duration: 0.6, ease: 'power3.in' },
+        i * 0.45);
+      // efek "buk" saat mendarat
+      tl.to(p, { scale: 1.03, duration: 0.08, yoyo: true, repeat: 1, ease: 'power1.out' }, '>');
+    });
+
+    // 2. Jeda sebentar agar koran teratas terbaca
+    tl.addLabel('keluar', '+=1.1');
+
+    // 3. Tumpukan berhamburan dan halaman terbuka
+    tl.to(papers.slice().reverse(), {
+      x: function (i) { return (i % 2 ? 1 : -1) * (window.innerWidth * 0.9); },
+      y: function (i) { return gsap.utils.random(-200, 200); },
+      rotation: function (i) { return (i % 2 ? 1 : -1) * gsap.utils.random(20, 45); },
+      duration: 0.7, ease: 'power2.in', stagger: 0.07
+    }, 'keluar');
+    tl.to(intro, { autoAlpha: 0, duration: 0.5 }, 'keluar+=0.5');
+
+    // 4. Isi bagian atas muncul berurutan
+    tl.from('.top-banner > *', { y: -30, autoAlpha: 0, duration: 0.5, stagger: 0.1 }, 'keluar+=0.7');
+    tl.from('.nav > *', { y: -20, autoAlpha: 0, duration: 0.4, stagger: 0.06 }, '<0.1');
+    tl.from('.hero-main .eyebrow, .hero-main p', { x: -60, autoAlpha: 0, duration: 0.6, stagger: 0.15 }, '<');
+    tl.from('.cta-red', { xPercent: 100, duration: 0.7, ease: 'power3.out' }, '<');
+    tl.from('.seal', { scale: 0, rotation: -180, duration: 0.7, ease: 'back.out(1.8)' }, '-=0.3');
+
+    function selesai() {
+      root.classList.remove('intro-on');
+      intro.remove();
+      ScrollTrigger.refresh();
+    }
+
+    function lewati() {
+      if (tl.time() < tl.labels.keluar) tl.play('keluar');
+    }
+    document.getElementById('lewati').addEventListener('click', lewati);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lewati(); });
+
+    // 5. Bagian lain muncul saat digulir
+    var reveal = '.stats, .ribbon, .profile-intro, .box, .step, .contact-card, section > h2, .lead';
+    gsap.utils.toArray(reveal).forEach(function (el) {
+      gsap.from(el, {
+        y: 40, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
